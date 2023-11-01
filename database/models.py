@@ -3,8 +3,7 @@ from pydantic import BaseModel, Field
 
 
 class Profile(BaseModel):
-    # The ID will be provided from the User's ID during creation
-    id: Optional[str]
+    id: str = Field(...)
     name: str = Field(...)
     age: int = Field(...)
     bio: str = Field(...)
@@ -13,6 +12,9 @@ class Profile(BaseModel):
     location: str = Field(...)
     gender: str = Field(...)
     height: str = Field(...)
+
+    class Config:
+        orm_mode = True
 
 
 class ProfileUpdate(BaseModel):
@@ -28,13 +30,15 @@ class ProfileUpdate(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "name": "Don Quixote",
+                "name": "John Doe",
                 "age": 30,
-                "bio": "Don Quixote is a Spanish novel by Miguel de Cervantes...",
+                "bio": "John Doe is an anonymous individual...",
                 "orientation": "Straight",
-                "occupation": "Programmer",
-                "location": "Long Beach",
+                "occupation": "Software Developer",
+                "location": "New York",
                 "gender": "Male",
-                "height": "5'8"
+                "height": "5'9"
             }
         }
+
+

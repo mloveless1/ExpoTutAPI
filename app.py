@@ -1,12 +1,12 @@
 from flask import Flask, jsonify
-from pymongo import MongoClient
+from routes.user_routes import users_bp
+from routes.profile_routes import profiles_bp
 
 app = Flask(__name__)
 
-client = MongoClient('localhost', 27017)
 
-db = client.DateApp
-profiles = db.profiles
+app.register_blueprint(users_bp)
+app.register_blueprint(profiles_bp)
 
 
 @app.route('/', methods=['GET'])
