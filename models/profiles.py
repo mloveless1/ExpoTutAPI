@@ -10,7 +10,8 @@ class Profile(BaseModel):
     bio: str = Field(...)
     orientation: str = Field(...)
     occupation: str = Field(...)
-    location: str = Field(...)
+    city: str = Field(...)
+    state: str = Field(...)
     gender: str = Field(...)
     height: str = Field(...)
 
@@ -21,7 +22,8 @@ class ProfileUpdate(BaseModel):
     bio: Optional[str]
     orientation: Optional[str]
     occupation: Optional[str]
-    location: Optional[str]
+    city: Optional[str]
+    state: Optional[str]
     gender: Optional[str]
     height: Optional[str]
 
@@ -33,7 +35,8 @@ class ProfileUpdate(BaseModel):
                 "bio": "Don Quixote is a Spanish novel by Miguel de Cervantes...",
                 "orientation": "Straight",
                 "occupation": "Programmer",
-                "location": "Long Beach",
+                "city": "Long Beach",
+                "state": "CA",
                 "gender": "Male",
                 "height": "5'8"
             }

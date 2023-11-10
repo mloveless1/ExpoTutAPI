@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+
 from database import database as db
 
 messages_bp = Blueprint('messages', __name__)
@@ -6,7 +7,12 @@ messages_bp = Blueprint('messages', __name__)
 
 @messages_bp.route('/messages', methods=['GET'])
 def fetch_messages():
-    messages = db.get_all_messages()
+    sender_id = request.args.get('sender_id')
+    if sender_id:
+        messages = db.get_messages_by_receiver_id(sender_id)
+    else:
+        return jsonify({"Error": "User ID is required"})
+
     return jsonify(messages)
 
 
