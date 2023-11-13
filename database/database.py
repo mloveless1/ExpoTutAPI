@@ -86,12 +86,12 @@ def get_message_by_id(message_id):
 
 def get_messages_by_receiver_id(receiver_id):
     """Return all messages sent to this receiver"""
-    return messages_collection.find({"receiver_id": receiver_id})
+    return list(messages_collection.find({"receiver_id": receiver_id}))
 
 
 def get_messages_by_sender_id(sender_id):
     """Return all messages sent by this sender"""
-    return messages_collection.find({"sender_id": sender_id})
+    return list(messages_collection.find({"sender_id": sender_id}))
 
 
 def update_message(message_id, data):
